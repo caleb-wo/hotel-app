@@ -1,1 +1,45 @@
-<p>reservation-form works!</p>
+<form [formGroup]="reservationForm" 
+(ngSubmit)="onSubmit()">
+    <div>
+        <label>Check-In Date:</label>
+        <input type="date" formControlName="checkInDate">
+        @if (reservationForm.get("checkInDate")?.invalid
+            && reservationForm.get("checkInDate")?.touched){
+            <div>Check-In Date is required.</div>
+        }
+    </div>
+    <div>
+        <label>Check-Out Date:</label>
+        <input type="date" formControlName="checkOutDate">
+        @if (reservationForm.get("checkOutDate")?.invalid
+            && reservationForm.get("checkOutDate")?.touched){
+            <div>Check-Out Date is required.</div>
+        }
+    </div>
+    <div>
+        <label>Gueat Name:</label>
+        <input type="test" formControlName="guestName">
+        @if (reservationForm.get("guestName")?.invalid
+            && reservationForm.get("guestName")?.touched){
+            <div>Guest Name is required.</div>
+        }
+    </div>
+    <div>
+        <label>Guest Email:</label>
+        <input type="email" formControlName="guestEmail">
+        @if (reservationForm.get("guestEmail")?.invalid
+            && reservationForm.get("guestEmail")?.touched){
+            <div>Guest Email is required.</div>
+        }
+    </div>
+    <div>
+        <label>Room Number:</label>
+        <input type="number" formControlName="roomNumber">
+        @if (reservationForm.get("roomNumber")?.invalid
+            && reservationForm.get("roomNumber")?.touched){
+            <div>Room Number is required.</div>
+        }
+    </div>
+
+    <button type="submit" [disabled]="reservationForm.invalid">Submit</button>
+</form>
