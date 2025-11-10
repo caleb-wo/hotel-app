@@ -4,6 +4,7 @@ import { FormBuilder,
          Validators } from '@angular/forms';
 import { ReservationService } from '../reservation/reservation.service';
 import { Reservation } from '../models/reservation';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-reservation-form',
@@ -16,6 +17,7 @@ export class ReservationFormComponent implements OnInit{
   constructor(
     private formBuilder: FormBuilder,
     private resService: ReservationService,
+    private router: Router,
   ){
   }
 
@@ -35,6 +37,8 @@ export class ReservationFormComponent implements OnInit{
     if(this.reservationForm.valid){
       let res: Reservation = this.reservationForm.value;
       this.resService.addReservation(res);
+
+      this.router.navigate(["/list"]);
     }
   }
 }

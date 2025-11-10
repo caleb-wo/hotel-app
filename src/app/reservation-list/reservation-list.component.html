@@ -1,13 +1,17 @@
 <h2>Reservation List</h2>
 
-<ul>
-    @for (res of reservations; track $index){
-        <li>
-            Guest: {{ res.guestName }} <br>
-            Email: {{ res.guestEmail }} <br>
-            Room No.: {{ res.roomNumber }} <br>
-            Check-In: {{ res.checkInDate }} <br>
-            Check-Out: {{ res.checkOutDate }} <br>
-        </li>
-    }
-</ul>
+@if (reservations.length){
+    <ul>
+        @for (res of reservations; track $index){
+            <li>
+                Guest: {{ res.guestName }} <br>
+                Email: {{ res.guestEmail }} <br>
+                Room No.: {{ res.roomNumber }} <br>
+                Check-In: {{ res.checkInDate }} <br>
+                Check-Out: {{ res.checkOutDate }} <br>
+            </li>
+        }
+    </ul>
+} @else {
+    <p>No reservations available</p>
+}
