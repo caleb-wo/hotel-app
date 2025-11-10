@@ -1,1 +1,13 @@
-<p>reservation-list works!</p>
+<h2>Reservation List</h2>
+
+<ul>
+    @for (res of reservations; track $index){
+        <li>
+            Guest: {{ res.guestName }} <br>
+            Email: {{ res.guestEmail }} <br>
+            Room No.: {{ res.roomNumber }} <br>
+            Check-In: {{ res.checkInDate }} <br>
+            Check-Out: {{ res.checkOutDate }} <br>
+        </li>
+    }
+</ul>
