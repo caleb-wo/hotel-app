@@ -10,6 +10,7 @@
                 Check-In: {{ res.checkInDate }} <br>
                 Check-Out: {{ res.checkOutDate }} <br>
                 <button (click)="deleteReservation(res.id)">Delete</button>
+                <button [routerLink]="['/edit', res.id]">Edit</button>
             </li>
         }
     </ul>
