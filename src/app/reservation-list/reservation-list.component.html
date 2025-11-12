@@ -1,19 +1,36 @@
 <app-home></app-home>
-<h2>Reservation List</h2>
+<hr>
+<h3 class="mt-5 mb-3">Reservation List</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Guest</th>
+            <th>Email</th>
+            <th>Room No.</th>
+            <th>Check-In</th>
+            <th>Check-Out</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (res of reservations; track $index){
+            <tr>
+                <td>{{ res.guestName }}</td>
+                <td>{{ res.guestEmail }}</td>
+                <td>{{ res.roomNumber }}</td>
+                <td>{{ res.checkInDate }}</td>
+                <td>{{ res.checkOutDate }}</td>
+                <td>
+                    <button class="btn btn-sm btn-danger mx-1" (click)="deleteReservation(res.id)">Delete</button>
+                    <button class="btn btn-sm btn-secondary mx-1" [routerLink]="['/edit', res.id]">Edit</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
 
 @if (reservations.length){
     <ul>
-        @for (res of reservations; track $index){
-            <li>
-                Guest: {{ res.guestName }} <br>
-                Email: {{ res.guestEmail }} <br>
-                Room No.: {{ res.roomNumber }} <br>
-                Check-In: {{ res.checkInDate }} <br>
-                Check-Out: {{ res.checkOutDate }} <br>
-                <button (click)="deleteReservation(res.id)">Delete</button>
-                <button [routerLink]="['/edit', res.id]">Edit</button>
-            </li>
-        }
     </ul>
 } @else {
     <p>No reservations available</p>
