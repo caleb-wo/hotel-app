@@ -47,8 +47,6 @@ export class ReservationFormComponent implements OnInit{
   onSubmit(): void {
     if(this.reservationForm.valid){
       let res: Reservation = this.reservationForm.value;
-      this.resService.addReservation(res);
-
       let id = this.activeRoute.snapshot.paramMap.get("id");
 
       if (id){
